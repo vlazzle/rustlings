@@ -31,10 +31,14 @@ fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroE
     // TODO: change this to return an appropriate error instead of panicking
     // when `parse()` returns an error.
     let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parseint)?;
-    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+    create_pos_nonzero(x)
     // s.parse()
     //     .map_err(ParsePosNonzeroError::from_parseint)
-    //     .map(|x| PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation))?
+    //     .map(self::create_pos_nonzero)?
+}
+
+fn create_pos_nonzero(x: i64) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
+    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
 }
 
 // Don't change anything below this line.
