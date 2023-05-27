@@ -31,9 +31,4 @@ fn main() {
         // interesting in the output? Do you have to 'join' on all the handles?
         println!("jobs completed {}", status.lock().unwrap().jobs_completed);
     }
-
-    // Why does joining just the first handle result in the same number of jobs_completed as the
-    // above loop that joins all handles?
-    // handles.pop().unwrap().join();
-    // println!("jobs completed {}", status.lock().unwrap().jobs_completed);
 }
